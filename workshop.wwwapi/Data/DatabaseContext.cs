@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using System.Diagnostics;
 using workshop.wwwapi.Models;
@@ -13,13 +14,15 @@ namespace workshop.wwwapi.Data
             var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
             _connectionString = configuration.GetValue<string>("ConnectionStrings:DefaultConnectionString")!;
             this.Database.EnsureCreated();
+            
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //TODO: Appointment Key etc.. Add Here
-            
 
             //TODO: Seed Data Here
+            modelBuilder.Entity<Patient>().HasData(new Patient { Id = 1, FirstName = "Mattis", LastName = "Henriksen" });
+            modelBuilder.Entity<Patient>().HasData(new Patient { Id = 2, FirstName = "Mathilde", LastName = "Larsen" });
 
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -28,6 +31,7 @@ namespace workshop.wwwapi.Data
             optionsBuilder.UseNpgsql(_connectionString);
             optionsBuilder.LogTo(message => Debug.WriteLine(message)); //see the sql EF using in the console
             
+
         }
 
 
