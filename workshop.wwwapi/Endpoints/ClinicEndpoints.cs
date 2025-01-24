@@ -253,20 +253,6 @@ namespace workshop.wwwapi.Endpoints
             return TypedResults.Created($"/doctor/{createdDoctorDto.Id}", createdDoctorDto);
         }
 
-        /*[ProducesResponseType(StatusCodes.Status200OK)]
-        public static async Task<IResult> GetDoctors(IRepository<Doctor> doctorRepository)
-        {
-            var doctors = await doctorRepository.Get();
-            var doctorDtos = doctors.Select(d => new DoctorDTO
-            {
-                Id = d.Id,
-                FirstName = d.FirstName,
-                LastName = d.LastName
-            }).ToList();
-
-            return TypedResults.Ok(doctorDtos);
-        }*/
-
         [ProducesResponseType(StatusCodes.Status200OK)]
         public static async Task<IResult> GetDoctors(IRepository<Appointment> appointmentRepository, IRepository<Doctor> doctorRepository, IRepository<Patient> patientRepository)
         {
@@ -309,26 +295,6 @@ namespace workshop.wwwapi.Endpoints
 
             return TypedResults.Ok(doctorDtos);
         }
-
-        /*[ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public static async Task<IResult> GetDoctorById(IRepository<Doctor> doctorRepository, int id)
-        {
-            var doctor = await doctorRepository.GetById(id);
-            if (doctor == null)
-            {
-                return TypedResults.NotFound(new { Message = "Doctor not found" });
-            }
-
-            var doctorDto = new DoctorDTO
-            {
-                Id = doctor.Id,
-                FirstName = doctor.FirstName,
-                LastName = doctor.LastName
-            };
-
-            return TypedResults.Ok(doctorDto);
-        }*/
 
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -402,20 +368,6 @@ namespace workshop.wwwapi.Endpoints
             return TypedResults.Created($"/patient/{createdPatientDto.Id}", createdPatientDto);
         }
 
-        /*[ProducesResponseType(StatusCodes.Status200OK)]
-        public static async Task<IResult> GetPatients(IRepository<Patient> patientRepository)
-        {
-            var patients = await patientRepository.Get();
-            var patientDtos = patients.Select(p => new PatientDTO
-            {
-                Id = p.Id,
-                FirstName = p.FirstName,
-                LastName = p.LastName,
-            }).ToList();
-
-            return TypedResults.Ok(patientDtos);
-        }*/
-
         [ProducesResponseType(StatusCodes.Status200OK)]
         public static async Task<IResult> GetPatients(IRepository<Appointment> appointmentRepository, IRepository<Doctor> doctorRepository, IRepository<Patient> patientRepository)
         {
@@ -458,26 +410,6 @@ namespace workshop.wwwapi.Endpoints
 
             return TypedResults.Ok(patientDtos);
         }
-
-        /*[ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public static async Task<IResult> GetPatientById(IRepository<Patient> patientRepository, int id)
-        {
-            var patient = await patientRepository.GetById(id);
-            if (patient == null)
-            {
-                return TypedResults.NotFound(new { Message = "Patient not found" });
-            }
-
-            var patientDto = new PatientDTO
-            {
-                Id = patient.Id,
-                FirstName = patient.FirstName,
-                LastName = patient.LastName
-            };
-
-            return TypedResults.Ok(patientDto);
-        }*/
 
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
