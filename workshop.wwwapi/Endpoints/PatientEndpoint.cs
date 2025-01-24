@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http.HttpResults;
+﻿/*using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using workshop.wwwapi.DTOs;
 using workshop.wwwapi.Models;
@@ -7,35 +6,17 @@ using workshop.wwwapi.Repository;
 
 namespace workshop.wwwapi.Endpoints
 {
-    public static class SurgeryEndpoint
+    public static class PatientEndpoint
     {
-        public static void ConfigureSurgeryEndpoint(this WebApplication app)
+        public static void ConfigurePatientEndpoint(this WebApplication app)
         {
-            var surgeryGroup = app.MapGroup("surgery");
             var patientGroup = app.MapGroup("patient");
 
-            /*surgeryGroup.MapGet("/doctors", GetDoctors);
-            surgeryGroup.MapGet("/appointmentsbydoctor/{id}", GetAppointmentsByDoctor);*/
-
-            // Patient endpoints
             patientGroup.MapPost("/", CreatePatient);
             patientGroup.MapGet("/", GetPatients);
             patientGroup.MapGet("/{id}", GetPatientById);
         }
 
-        //[ProducesResponseType(StatusCodes.Status200OK)]
-        //public static async Task<IResult> GetDoctors(IRepository<Doctor> repository)
-        //{
-        //    return TypedResults.Ok(await repository.GetDoctors());
-        //}
-
-        //[ProducesResponseType(StatusCodes.Status200OK)]
-        //public static async Task<IResult> GetAppointmentsByDoctor(IRepository repository, int id)
-        //{
-        //    return TypedResults.Ok(await repository.GetAppointmentsByDoctor(id));
-        //}
-
-        // Patient endpoints
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public static async Task<IResult> CreatePatient(IRepository<Patient> repository, PatientDto patientDto)
@@ -98,3 +79,4 @@ namespace workshop.wwwapi.Endpoints
         }
     }
 }
+*/
