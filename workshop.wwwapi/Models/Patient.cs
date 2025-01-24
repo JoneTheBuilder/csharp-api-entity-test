@@ -17,5 +17,7 @@ namespace workshop.wwwapi.Models
 
         [Column("last_name")]
         public string LastName { get; set; }
+
+        public List<Appointment> Appointments { get; set; }
     }
 }
