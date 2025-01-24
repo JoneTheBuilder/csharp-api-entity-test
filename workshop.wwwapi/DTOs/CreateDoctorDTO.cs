@@ -1,10 +1,8 @@
 ﻿namespace workshop.wwwapi.DTOs
 {
-    public class PatientDTO
+    public class CreateDoctorDTO
     {
-        public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        //public List<AppointmentDTO> Appointments { get; set; }
     }
 }

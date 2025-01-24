@@ -14,23 +14,13 @@ namespace workshop.wwwapi.Data
             var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
             _connectionString = configuration.GetValue<string>("ConnectionStrings:DefaultConnectionString")!;
             this.Database.EnsureCreated();
-            
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Appointment>()
-                .HasKey(a => new { a.PatientId, a.DoctorId });
-
-            modelBuilder.Entity<Patient>().HasData(
-                new Patient { Id = 1, FirstName = "Mattis", LastName = "Henriksen" },
-                new Patient { Id = 2, FirstName = "Mathilde", LastName = "Larsen" }
-            );
-
-            modelBuilder.Entity<Doctor>().HasData(
-                new Doctor { Id = 1, FirstName = "Alexander", LastName = "Solberg" },
-                new Doctor { Id = 2, FirstName = "Hermine", LastName = "Aasheim" }
-            );
+            modelBuilder.Entity<Appointment>().HasKey(a => a.Id);
+            //modelBuilder.Entity<Doctor>().HasKey(a => a.Id);
+            //modelBuilder.Entity<Patient>().HasKey(a => a.Id);
 
             modelBuilder.Entity<Appointment>().HasData(
                 new Appointment
@@ -49,16 +39,27 @@ namespace workshop.wwwapi.Data
                 }
             );
 
+            modelBuilder.Entity<Doctor>().HasData(
+                new Doctor { Id = 1, FirstName = "Alexander", LastName = "Solberg" },
+                new Doctor { Id = 2, FirstName = "Hermine", LastName = "Aasheim" }
+            );
+
+            modelBuilder.Entity<Patient>().HasData(
+                new Patient { Id = 1, FirstName = "Mattis", LastName = "Henriksen" },
+                new Patient { Id = 2, FirstName = "Mathilde", LastName = "Larsen" }
+            );
+
             base.OnModelCreating(modelBuilder);
         }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseNpgsql(_connectionString);
             optionsBuilder.LogTo(message => Debug.WriteLine(message)); //see the sql EF using in the console
         }
 
-        public DbSet<Patient> Patients { get; set; }
-        public DbSet<Doctor> Doctors { get; set; }
         public DbSet<Appointment> Appointments { get; set; }
+        public DbSet<Doctor> Doctors { get; set; }
+        public DbSet<Patient> Patients { get; set; }
     }
 }

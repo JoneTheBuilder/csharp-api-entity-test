@@ -7,7 +7,7 @@ namespace workshop.wwwapi.Models
     [Table("appointments")]
     public class Appointment
     {
-        [Key]
+        //[Key]
         [Column("id")]
         public int Id { get; set; }
 
