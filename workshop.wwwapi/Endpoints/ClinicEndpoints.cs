@@ -1,7 +1,4 @@
-﻿using System.Numerics;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using workshop.wwwapi.DTOs;
 using workshop.wwwapi.Models;
 using workshop.wwwapi.Repository;
@@ -12,7 +9,6 @@ namespace workshop.wwwapi.Endpoints
     {
         public static void ConfigureClinicEndpoints(this WebApplication app)
         {
-
             var appointmentGroup = app.MapGroup("appointment");
             var doctorGroup = app.MapGroup("doctor");
             var patientGroup = app.MapGroup("patient");
@@ -184,7 +180,6 @@ namespace workshop.wwwapi.Endpoints
             return TypedResults.Ok(appointmentDtos);
         }
 
-
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public static async Task<IResult> GetAppointmentsByPatientId(IRepository<Appointment> appointmentRepository, IRepository<Doctor> doctorRepository, IRepository<Patient> patientRepository, int patientId)
@@ -223,7 +218,6 @@ namespace workshop.wwwapi.Endpoints
 
             return TypedResults.Ok(appointmentDtos);
         }
-
 
         // Doctor endpoints
         [ProducesResponseType(StatusCodes.Status201Created)]

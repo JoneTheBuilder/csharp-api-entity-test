@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc.Testing;
-using NUnit.Framework;
 using System.Net.Http.Json;
 using workshop.wwwapi.DTOs;
 
@@ -25,6 +24,7 @@ public class PatientsEndpointTests
         _factory.Dispose();
     }
 
+    // Remeber that this test will only work the first time since the next test creates another Patient, so the Assert.That(patients.Length, Is.EqualTo(2)); would be false.
     [Test, Order(1)]
     public async Task GetSeedPatients()
     {

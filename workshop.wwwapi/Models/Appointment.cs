@@ -1,12 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace workshop.wwwapi.Models
 {
-    //TODO: decorate class/columns accordingly
     [Table("appointments")]
     public class Appointment
     {
+        // For some reason I had to comment out [Key] here and use modelBuilder.Entity<Appointment>().HasKey(a => a.Id); in DatabaseContext.cs.
         //[Key]
         [Column("id")]
         public int Id { get; set; }

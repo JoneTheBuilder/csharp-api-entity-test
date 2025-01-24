@@ -1,6 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Options;
 using System.Diagnostics;
 using workshop.wwwapi.Models;
 
@@ -19,8 +17,6 @@ namespace workshop.wwwapi.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Appointment>().HasKey(a => a.Id);
-            //modelBuilder.Entity<Doctor>().HasKey(a => a.Id);
-            //modelBuilder.Entity<Patient>().HasKey(a => a.Id);
 
             modelBuilder.Entity<Appointment>().HasData(
                 new Appointment

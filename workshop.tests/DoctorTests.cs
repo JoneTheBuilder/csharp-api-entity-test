@@ -23,6 +23,7 @@ public class DoctorTests
         _factory.Dispose();
     }
 
+    // Remeber that this test will only work the first time since the next test creates another Doctor, so the Assert.That(doctors.Length, Is.EqualTo(2)); would be false.
     [Test, Order(1)]
     public async Task GetSeedDoctorsTest()
     {

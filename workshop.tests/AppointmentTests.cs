@@ -23,6 +23,7 @@ public class AppointmentTests
         _factory.Dispose();
     }
 
+    // Remeber that this test will only work the first time since the next test creates another Appointment, so the Assert.That(appointments.Length, Is.EqualTo(2)); would be false.
     [Test, Order(1)]
     public async Task GetSeedAppointmentsTest()
     {
